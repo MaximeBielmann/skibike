@@ -9,11 +9,12 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  
+
+       
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container">
         <a class="navbar-brand" href="">
-        <%= image_tag("logo.png", width: "75", height: "75") %>
+        <%= image_tag("logo.png", width: "80", height: "80") %>
   	  </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -24,55 +25,41 @@
               <a class="nav-link" href="/">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#booking">Réservation</a>
+              <a class="nav-link" href="/booking">Réservation</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#location">Destinations</a>
+              <a class="nav-link" href="/contact">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#team">L'équipe</a>
+              <a class="nav-link" href="/shop">Boutique</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="shop.html">Boutique</a>
-            </li>
+            <%= render 'devise/menu/registration_items' %>
+					  <%= render 'devise/menu/login_items' %>
           </ul>
         </div>
       </div>
     </nav>
     
   <body>
-    
+    <div class="row">
+          <div class="col-12">
+            <% if notice %>
+            <div class="alert alert-success text-center" role="alert">
+              <%= notice %>
+            </div>
+            <% elsif alert %>
+            <div class="alert alert-danger text-center" role="alert">
+              <%= alert %>
+            </div>
+            <% end %>
+          </div>
+    </div> 
     <%= yield %>
     
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; SkiBike Québec 2020</p>
+        <p class="m-0 text-center text-white">Copyright &copy; SkiBike Québec 2020 par </p><a href="https://lewys.io" target="_blank">lewys.io</a>
       </div>
     </footer>
-    
-    <script>
-      $("nav ul li a[href^='#']").on('click', function(e) {
-
-         // prevent default anchor click behavior
-         e.preventDefault();
-      
-         // store hash
-         var hash = this.hash;
-      
-         // animate
-         $('html, body').animate({
-             scrollTop: $(hash).offset().top - 150
-           }, 700, function(){
-      
-             // when done, add hash to url
-             // (default click behaviour)
-             window.location.hash = hash;
-           });
-      
-      });
-    </script>
   </body>
 </html>

@@ -14,4 +14,3 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap
-//= require smooth_scroll
