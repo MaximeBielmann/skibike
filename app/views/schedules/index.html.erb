@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center">Réserver</h1>
+            
+            <table class="table text-center">
+              <thead>
+                <tr>
+                  <th scope="col">Montagne</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Participants</th>
+                  <th scope="col">Réserver</th>
+                </tr>
+              </thead>
+              <tbody>
+              <% @schedules.each do |schedule| %>
+                <tr>
+                  <th scope="row">
+                    <%= schedule.mountain.mount_title %>
+                  </th>
+                  <td>
+                    <%= schedule.schedule_date.strftime("%d %B %Y") %>
+                  </td>
+                  <td>
+                    <%= schedule.schedule_current_participants %> / <%= schedule.schedule_max_participants %>
+                  </td>
+                  <% if schedule.schedule_current_participants == schedule.schedule_max_participants %>
+                    <td>
+                      <p>COMPLET</p>
+                    </td>
+                  <% else %>
+                    <td>
+                      <a href="/schedules/<%= schedule.id %>" class="btn btn-primary">Réserver</button>
+                    </td>
+                  <% end %>
+              <% end %>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>

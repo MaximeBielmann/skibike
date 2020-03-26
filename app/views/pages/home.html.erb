@@ -122,17 +122,19 @@
     </div>
 
     <div class="row">
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><%= image_tag("montagne1.jpg", class: 'card-img-top') %></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Destination numéro un</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+      <% @mountains.each do |mount| %>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <%= image_tag("montagne1.jpg", class: 'card-img-top') %>
+            <div class="card-body">
+              <h4 class="card-title">
+                <%= mount.mount_title %>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
     <!-- /.row -->
 

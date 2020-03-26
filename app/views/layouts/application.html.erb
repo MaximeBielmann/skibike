@@ -3,6 +3,7 @@
   <head>
     <title>Skibike Québec</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/5ec8169bb0.js" crossorigin="anonymous"></script>
     
     <%= csrf_meta_tags %>
 
@@ -25,7 +26,7 @@
               <a class="nav-link" href="/">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/booking">Réservation</a>
+              <a class="nav-link" href="/schedules">Réservation</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/contact">Contact</a>
@@ -35,12 +36,17 @@
             </li>
             <%= render 'devise/menu/registration_items' %>
 					  <%= render 'devise/menu/login_items' %>
+					  <% if current_user && current_user.admin %>
+  					  <li class="nav-item">
+                <a class="nav-link" href="/admin">Admin</a>
+              </li>
+					  <% end %>
           </ul>
         </div>
       </div>
     </nav>
     
-  <body>
+  <body class="d-flex flex-column h-100">
     <div class="row">
           <div class="col-12">
             <% if notice %>
@@ -54,12 +60,15 @@
             <% end %>
           </div>
     </div> 
+    
     <%= yield %>
     
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; SkiBike Québec 2020 par </p><a href="https://lewys.io" target="_blank">lewys.io</a>
-      </div>
-    </footer>
   </body>
+  
+  <footer class="footer mt-auto py-3 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; SkiBike Québec 2020 par <a href="https://lewys.io" class="text-white" target="_blank">lewys.io</a></p>
+      </div>
+  </footer>
+    
 </html>

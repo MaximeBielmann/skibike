@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center">Ajouter une montagne</h1>
+            
+            <%= form_with(url: "/mountains", method: "post") do |f| %>
+              <div class="form-group row">
+                  <%= f.text_field :mount_title, class: "form-control col-10", placeholder: "Nom de la montagne" %>
+                  <%= submit_tag("Ajouter", class: "btn btn-primary col-2") %>
+              </div>
+            <% end %>
+            
+        </div>
+    </div>
+    <div class="row mt-100">
+        <div class="col-12 text-center">
+            <h1 class="">Liste des montagnes</h1>
+            <table class="table text-center">
+              <thead>
+                <tr>
+                  <th scope="col">Montagne</th>
+                  <th scope="col">Modifier</th>
+                  <th scope="col">Supprimer</th>
+                </tr>
+              </thead>
+              <tbody>
+              <% @mountains.each do |mount| %>
+                <tr>
+                  <th scope="row">
+                      <%= form_tag("/mountains/#{mount.id}", method: "patch") do %>
+                        <%= text_field_tag(:mount_title, mount.mount_title, class: 'form-control') %>
+                        <td><%= button_tag type: 'submit', class: 'btn btn-primary btn-sm btn-success' do %>
+                                <i class="fas fa-check"></i>
+                        <% end %></td>
+                      <% end %>
+                  </th>
+                  <td>
+                      <%= form_tag("/mountains/#{mount.id}", method: "delete") do %>
+                        <%= button_tag type: 'submit', class: 'btn btn-primary btn-sm btn-success' do %>
+                                <i class="fas fa-trash"></i>
+                        <% end %>
+                      <% end %>
+                  </td>
+              <% end %>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>

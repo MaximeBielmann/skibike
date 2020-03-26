@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 body {
   padding-top: 56px;
 }
@@ -62,4 +66,19 @@ a {
 
 .logo-signin {
   vertical-align: center;
+}
+
+.container-fluid-admin {
+  margin-top: -50px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.row-admin {
+  margin-right: 0px;
+  margin-left: -15px;
+}
+
+.mt-100 {
+  margin-top: 100px;
 }

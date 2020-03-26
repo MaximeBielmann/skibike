@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row mt-100">
+        <div class="col-12 text-center">
+            <h1 class="">Liste des réservations</h1>
+            <table class="table text-center">
+              <thead>
+                <tr>
+                  <th scope="col">Montagne</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Participants</th>
+                  <th scope="col">Réserver</th>
+                </tr>
+              </thead>
+              <tbody>
+              <% @bookings.each do |booking| %>
+                <tr>
+                  <th scope="row">
+                    <%= booking.mountain.mount_title %>
+                  </th>
+                  <td>
+                    <%= booking.schedule_date %>
+                  </td>
+                  <td>
+                    <%= booking.schedule_current_participants %> / <%= booking.schedule_max_participants %>
+                  </td>
+                  <td>
+                    <button class="btn btn-primary">Voir</button>
+                  </td>
+              <% end %>
+              </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mt-100">
+        <div class="col-12 text-center">
+            <h1 class="">Liste des disponibilités</h1>
+            <table class="table text-center">
+              <thead>
+                <tr>
+                  <th scope="col">Montagne</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Participants</th>
+                  <th scope="col">Réserver</th>
+                </tr>
+              </thead>
+              <tbody>
+              <% @schedules.each do |schedule| %>
+                <tr>
+                  <th scope="row">
+                    <%= schedule.mountain.mount_title %>
+                  </th>
+                  <td>
+                    <%= schedule.schedule_date %>
+                  </td>
+                  <td>
+                    <%= schedule.schedule_current_participants %> / <%= schedule.schedule_max_participants %>
+                  </td>
+                  <td>
+                    <button class="btn btn-primary">Réserver</button>
+                  </td>
+              <% end %>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
