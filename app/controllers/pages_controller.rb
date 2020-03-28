@@ -6,8 +6,8 @@ class PagesController < ApplicationController
 
   def admin
     @mountains = Mountain.all
-    @schedules = Schedule.where(schedule_current_participants: 0)
-    @bookings = Schedule.all - @schedules
+    @schedules = Schedule.all
+    @bookings = Booking.all
   end
   
   def shop

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :charges, only: %i[new create]
+  
   devise_for :users
   
   root 'pages#home'
@@ -15,5 +17,8 @@ Rails.application.routes.draw do
   get 'schedules' => 'schedules#index'
   get 'schedules/:id' => 'schedules#show'
   
+  get 'bookings/:id' => 'bookings#show'
   post 'bookings' => 'bookings#create'
+  delete 'bookings/:id' => 'bookings#destroy'
+  get 'bookings/:id/payement' => 'charges#new'
 end

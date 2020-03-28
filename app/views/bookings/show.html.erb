@@ -1,0 +1,36 @@
+<div class="container">
+    
+    <% if current_user.admin %>
+    
+    <div class="row mt-100">
+        <div class="col-md-6 text-center">
+            <h1 class="">Client</h1>
+            <p><%= @booking.user.email %></p>
+        </div>
+        <div class="col-md-6 text-center">
+            <h1 class="">Sortie</h1>
+            <p>Date : <%= @booking.schedule.schedule_date %></p>
+            <p>Lieu : <%= @booking.schedule.mountain.mount_title %></p>
+            <p>Participants : <%= @booking.booking_participants %></p>
+            <p>
+                Paiement : 
+                <% if @booking.payement_status %>
+                Validé
+                <% else %>
+                En attente
+                <% end %>
+            </p>
+        </div>
+    </div>
+    
+    
+    
+    <% else %>
+        <div class="row">
+          <div class="col-12"> 
+              <h1 class="text-center" style="padding: 300px 0 300px 0;">ACCES NON AUTORISE</h1>
+          </div>
+        </div>
+    <% end %>
+    
+</div>

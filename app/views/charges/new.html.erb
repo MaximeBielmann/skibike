@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row mt-100">
+        <div class="col-12">
+            <h1>Récapitulatif de votre réservation</h1>
+            <p>Date : <%= @booking.schedule.schedule_date %></p>
+            <p>Lieu : <%= @booking.schedule.mountain.mount_title %></p>
+            <p>Participants : <%= @booking.booking_participants %></p>
+            <%= form_tag charges_path do %>
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key="<%= Rails.application.secrets.stripe[:publishable_key] %>"
+                      data-description="Réservation"
+                      data-amount="<%= @booking.booking_participants * 8000 %>"
+                      data-currency="cad"></script>
+            <% end %>
+        </div>
+    </div>
+</div>
+

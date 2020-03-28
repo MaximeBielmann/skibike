@@ -8,7 +8,9 @@
                   <th scope="col">Montagne</th>
                   <th scope="col">Date</th>
                   <th scope="col">Participants</th>
-                  <th scope="col">Réserver</th>
+                  <th scope="col">Paiement</th>
+                  <th scope="col">Voir</th>
+                  <th scope="col">Supprimer</th>
                 </tr>
               </thead>
               <tbody>
@@ -18,13 +20,27 @@
                     <%= booking.mountain.mount_title %>
                   </th>
                   <td>
-                    <%= booking.schedule_date %>
+                    <%= booking.schedule.schedule_date %>
                   </td>
                   <td>
-                    <%= booking.schedule_current_participants %> / <%= booking.schedule_max_participants %>
+                    <%= booking.booking_participants %> / <%= booking.schedule.schedule_max_participants %>
                   </td>
                   <td>
-                    <button class="btn btn-primary">Voir</button>
+                    <% if booking.payement_status == true %>
+                      <i class="fas fa-check"></i>
+                    <% else %>
+                      <i class="fas fa-times"></i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <a href="/bookings/<%= booking.id %>" class="btn btn-primary btn-sm btn-success"><i class="fas fa-eye"></i></a>
+                  </td>
+                  <td>
+                    <%= form_tag("/bookings/#{booking.id}", method: "delete") do %>
+                        <%= button_tag type: 'submit', class: 'btn btn-primary btn-sm btn-success' do %>
+                                <i class="fas fa-trash"></i>
+                        <% end %>
+                    <% end %>
                   </td>
               <% end %>
               </tbody>
