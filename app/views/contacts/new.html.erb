@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-2">
+          
+      </div> 
+      <div class="col-md-8 col-sm-12">
+              <h3 class="text-center">Nous contacter</h3>
+            
+              <%= simple_form_for @contact, :html => {:class => '' } do |f| %>
+                <%= f.input :name, label: 'Nom', :required => true %>
+                <%= f.input :email, label: 'Email', :required => true %>
+                <%= f.input :message, label: 'Votre message', :as => :text, :required => true %>
+                <div class= "hidden">
+                  <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+                </div>
+                <div>
+                  </br>
+                  <%= f.button :submit, 'Envoyer', :class=> "btn btn-primary" %>
+                </div>
+              <% end %>
+      </div> 
+    </div>
+</div>
+
+

@@ -1,41 +1,42 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center">Réserver</h1>
+            <h1>Réserver</h1>
             
-            <table class="table text-center">
-              <thead>
-                <tr>
-                  <th scope="col">Montagne</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Participants</th>
-                  <th scope="col">Réserver</th>
-                </tr>
-              </thead>
-              <tbody>
-              <% @schedules.each do |schedule| %>
-                <tr>
-                  <th scope="row">
-                    <%= schedule.mountain.mount_title %>
-                  </th>
-                  <td>
-                    <%= schedule.schedule_date.strftime("%d %B %Y") %>
-                  </td>
-                  <td>
-                    <%= schedule.schedule_current_participants %> / <%= schedule.schedule_max_participants %>
-                  </td>
-                  <% if schedule.schedule_current_participants == schedule.schedule_max_participants %>
-                    <td>
-                      <p>COMPLET</p>
-                    </td>
-                  <% else %>
-                    <td>
-                      <a href="/schedules/<%= schedule.id %>" class="btn btn-primary">Réserver</button>
-                    </td>
-                  <% end %>
-              <% end %>
-              </tbody>
-            </table>
+            <%#
+              Filterrific adds the `form_for_filterrific` view helper:
+              * adds dom id 'filterrific_filter'
+              * applies javascript behaviors:
+                  * AJAX form submission on change
+                  * AJAX spinner while AJAX request is being processed
+              * sets form_for options like :url, :method and input name prefix
+            %>
+            <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
+              <div>
+                Destination
+                <%= f.select(
+                  :with_mountain_id,
+                  @filterrific.select_options[:with_mountain_id],
+                  { include_blank: '- Any -' }
+                ) %>
+              </div>
+              <div>
+                Date
+                <%= f.text_field(:with_schedule_date, class: 'js-datepicker') %>
+              </div>
+              <div>
+                <%= link_to(
+                  'Reset filters',
+                  reset_filterrific_url,
+                ) %>
+              </div>
+              <%= f.submit 'Filter' %>
+            <% end %>
+            
+            <%= render(
+              partial: 'schedules/list',
+              locals: { schedules: @schedules }
+            ) %>
         </div>
     </div>
 </div>

@@ -47,10 +47,17 @@ a {
   color: #f76b1c;
 }
 .btn-primary {
+  color: #000000;
+  background-color: #ffffff;
+  border-color: #000000;
+}
+
+.btn-primary:hover {
   color: #f76b1c;
-  background-color: #000000;
+  background-color: #ffffff;
   border-color: #f76b1c;
 }
+
 
 .btn-block {
   margin-top: 20px;
@@ -81,4 +88,8 @@ a {
 
 .mt-100 {
   margin-top: 100px;
+}
+
+.hidden { 
+  display: none; 
 }

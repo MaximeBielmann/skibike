@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :charges, only: %i[new create]
+  resources "contacts", only: [:new, :create]
   
   devise_for :users
   
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
   get 'admin' => 'pages#admin'
   get 'shop' => 'pages#shop'
   get 'booking' => 'pages#booking'
-  get 'contact' => 'pages#contact'
+  get 'contact' => 'contacts#new'
   
   post 'mountains' => 'mountains#create'
   patch 'mountains/:id' => 'mountains#update'

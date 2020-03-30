@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap
+//= require bootstrap-datetimepicker
+//= require filterrific/filterrific-jquery
