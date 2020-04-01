@@ -15,9 +15,9 @@
             <p>
                 Paiement : 
                 <% if @booking.payement_status %>
-                Validé
+                    <i class="fas fa-check"></i>
                 <% else %>
-                En attente
+                    <a href="/bookings/<%= @booking.id %>/payement" class="btn btn-primary btn-sm btn-success">PAYER</a>
                 <% end %>
             </p>
         </div>

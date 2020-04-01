@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   post 'bookings' => 'bookings#create'
   delete 'bookings/:id' => 'bookings#destroy'
   get 'bookings/:id/payement' => 'charges#new'
+  get 'my-bookings' => 'bookings#mybookings'
 end
