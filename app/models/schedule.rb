@@ -16,6 +16,8 @@ class Schedule < ApplicationRecord
     where(mountain_id: [*mountain_ids])
   }
   
-  
+  scope :with_schedule_date, ->(date) {
+   
+  }
   
 end
