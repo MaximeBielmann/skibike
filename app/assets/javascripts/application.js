@@ -16,3 +16,5 @@
 //= require bootstrap
 //= require bootstrap-datetimepicker
 //= require filterrific/filterrific-jquery
+//= require moment
+//= require tempusdominus-bootstrap-4

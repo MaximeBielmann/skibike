@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5ec8169bb0.js" crossorigin="anonymous"></script>
     
+    
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -63,6 +64,13 @@
     
     <%= yield %>
     
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker4').datetimepicker({
+                format: 'L'
+            });
+        });
+    </script>
   </body>
   
   <footer class="footer mt-auto py-3 bg-dark">

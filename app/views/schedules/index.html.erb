@@ -12,25 +12,38 @@
               * sets form_for options like :url, :method and input name prefix
             %>
             <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
-              <div>
-                Destination
-                <%= f.select(
-                  :with_mountain_id,
-                  @filterrific.select_options[:with_mountain_id],
-                  { include_blank: '- Any -' }
-                ) %>
+            <div class="row">
+                <div class="col-md-5 mb-2">
+                  <%= f.select(
+                    :with_mountain_id,
+                    @filterrific.select_options[:with_mountain_id],
+                    { include_blank: '- Destination -' },
+                    class: 'form-control'
+                  ) %>
+                </div>
+                <div class="col-md-4">
+                  <%#= f.text_field(:with_schedule_date, class: 'js-datepicker') %>
+                   
+                <div class="form-group">
+                      <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+                          <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" placeholder=" - Date - "/>
+                          <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+                              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                </div>
+                <div class="col-md-2">
+                  <%= f.submit 'Chercher', class: 'btn btn-primary' %>
+                </div>
+                <div class="col-md-1">
+                  <%= link_to(
+                    'Réinitialiser',
+                    reset_filterrific_url,
+                  ) %>
+                </div>
               </div>
-              <div>
-                Date
-                <%= f.text_field(:with_schedule_date, class: 'js-datepicker') %>
-              </div>
-              <div>
-                <%= link_to(
-                  'Reset filters',
-                  reset_filterrific_url,
-                ) %>
-              </div>
-              <%= f.submit 'Filter' %>
             <% end %>
             
             <%= render(

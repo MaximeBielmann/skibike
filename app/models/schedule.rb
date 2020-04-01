@@ -17,7 +17,7 @@ class Schedule < ApplicationRecord
   }
   
   scope :with_schedule_date, ->(date) {
-   
+   where("schedules.schedule_date == ?", date)
   }
   
 end
