@@ -16,7 +16,7 @@ class SchedulesController < ApplicationController
       # NOTE: filterrific_find returns an ActiveRecord Relation that can be
       # chained with other scopes to further narrow down the scope of the list,
       # e.g., to apply permissions or to hard coded exclude certain types of records.
-      @schedules = @filterrific.find.page(params[:page])
+      @schedules = @filterrific.find.page(params[:page]).order(:schedule_date)
   
       # Respond to html for initial page load and to js for AJAX filter updates.
       respond_to do |format|
