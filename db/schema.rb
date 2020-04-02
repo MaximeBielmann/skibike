@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_29_171757) do
+ActiveRecord::Schema.define(version: 2020_04_02_163736) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id"
@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(version: 2020_03_29_171757) do
 
   create_table "schedules", force: :cascade do |t|
     t.integer "mountain_id"
-    t.datetime "schedule_date"
     t.integer "schedule_max_participants"
     t.integer "schedule_current_participants"
     t.boolean "available_schedule", default: true
+    t.datetime "schedule_date"
   end
 
   create_table "users", force: :cascade do |t|
