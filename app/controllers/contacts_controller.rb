@@ -12,6 +12,6 @@ class ContactsController < ApplicationController
       flash.now[:error] = "Erreur pendant l'envoi du message."
       render :new
     end
-    redirect_to '/home'
+    redirect_to :root
   end
 end
